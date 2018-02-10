@@ -1,0 +1,101 @@
+<!-- <h1>Angular 4</h1>
+<div>
+<h3>Usuários</h3>
+<table>
+  <tr>
+    <th>Id</th>
+    <th>Login</th>
+    <th>Nome</th>
+    <th>CPF</th>
+    <th>Email</th>
+    <th>Endereço</th>
+    <th></th>
+    <th></th>
+  </tr>
+  <tr *ngFor="let usuario of usuarios">
+    <td>{{usuario.id}}</td>
+    <td>{{usuario.login}}</td>
+    <td>{{usuario.nome}}</td>
+    <td>{{usuario.cpf}}</td>
+    <td>{{usuario.email}}</td>
+    <td>{{usuario.endereco}}</td>
+    <td>
+      <button type="button" (click)="loadUserToEdit(user.id)">Edit</button>
+    </td>
+    <td>
+      <button type="button" (click)="deleteUser(user.id)">Delete</button>
+    </td>
+  </tr>
+</table> -->
+
+<div class="container mt-3">
+  <div class="card">
+    <div class="card-header">
+      Usuários
+    </div>
+    <div class="card-body">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Login</th>
+            <th>Nome</th>
+            <th>CPF</th>
+            <th>Email</th>
+            <th>Endereço</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let usuario of usuarios">
+            <th scope="row">{{usuario.id}}</th>
+            <td>{{usuario.login}}</td>
+            <td>{{usuario.nome}}</td>
+            <td>{{usuario.cpf}}</td>
+            <td>{{usuario.email}}</td>
+            <td>{{usuario.endereco}}</td>
+            <td>
+              <button type="button" class="btn btn-success" (click)="editUser(usuario)">Edit</button>
+              <button type="button" class="btn btn-danger" (click)="onRemoveUser(usuario)">Delete</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <button type="button" class="btn btn-primary" (click)="newUser()">Novo usuário</button>
+    </div>
+  </div>
+
+  <div class="card mt-3" *ngIf="show_form">
+    <div class="card-header">
+      Criar usuário
+    </div>
+    <div class="card-body">
+      <form>
+        <div class="form-row">
+          <div class="form-group col-md-4">
+            <input type="text" class="form-control" name="nome" id="nome" [(ngModel)]="new_user.nome" placeholder="Nome">
+          </div>
+          <div class="form-group col-md-4">
+            <input type="text" class="form-control" name="login" id="login" [(ngModel)]="new_user.login" placeholder="Login">
+          </div>
+          <div class="form-group col-md-4">
+            <input type="text" class="form-control" name="cpf" id="cpf" [(ngModel)]="new_user.cpf" placeholder="CPF">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-4">
+            <input type="text" class="form-control" name="email" id="email" [(ngModel)]="new_user.email" placeholder="Email">
+          </div>
+          <div class="form-group col-md-4">
+            <input type="text" class="form-control" name="endereco" id="endereco" [(ngModel)]="new_user.endereco" placeholder="Endereço">
+          </div>
+          <div class="form-group col-md-4">
+            <input type="password" class="form-control" name="senha" id="senha" [(ngModel)]="new_user.senha" placeholder="Senha">
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary" (click)="saveUser()">Salvar</button>
+        <button type="button" class="btn btn-danger" (click)="cancelNewUser()">Cancelar</button>
+      </form>
+    </div>
+  </div>
+</div>
